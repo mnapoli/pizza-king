@@ -8,5 +8,4 @@
 /*
  * Et ensuite on affiche le prix de la pizza :
  */
-echo 'Voici le prix de votre pizza :' . PHP_EOL;
-printf('%.2f €', $pizza->prix());
+printf("Voici le prix de votre pizza :\n%.2f €", $pizza->prix());
