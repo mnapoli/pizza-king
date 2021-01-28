@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Pizza\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pizza\\Test\\": "tests"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
