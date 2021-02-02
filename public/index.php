@@ -3,15 +3,18 @@
 use PizzaKing\Controller\DevisController;
 use PizzaKing\Controller\HomeController;
 use Slim\Factory\AppFactory;
+use Twig\Environment as TwigEnvironment;
 use Twig\Loader\FilesystemLoader;
+use Whoops\Run as WhoopsRun;
+use Whoops\Handler\PrettyPageHandler;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops = new WhoopsRun;
+$whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
-$twig = new \Twig\Environment(new FilesystemLoader(__DIR__ . '/../templates'), [
+$twig = new TwigEnvironment(new FilesystemLoader(__DIR__ . '/../templates'), [
     'debug' => true,
 ]);
 
