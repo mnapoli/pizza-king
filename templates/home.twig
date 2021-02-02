@@ -1,0 +1,68 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <h2 class="font-extrabold text-4xl mb-8">
+        Compose ta pizza 🍕
+    </h2>
+
+    <img class="float-right mt-12 w-64 border-4 border-white" alt="Pizza"
+         src="https://media4.giphy.com/media/MZi92gxHBeA2Q/giphy.gif">
+
+    <form action="/devis" method="post" class="text-lg">
+
+        <p class="text-xl font-bold mb-3">
+            Sauce
+        </p>
+        <div class="flex items-center">
+            <input name="sauce" type="radio" id="sauce_tomate" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="sauce tomate" checked>
+            <label for="sauce_tomate">
+                Sauce tomate
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input name="sauce" type="radio" id="sauce_creme" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="sauce creme">
+            <label for="sauce_creme">
+                Sauce crème
+            </label>
+        </div>
+
+        <p class="text-xl font-bold mt-5 mb-3">
+            Fromage
+        </p>
+        <div class="flex items-center">
+            <input name="fromage" type="radio" id="fromage_mozza" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="mozzarella" checked>
+            <label for="fromage_mozza">
+                Mozzarella
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input name="fromage" type="radio" id="fromage_chevre" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="chevre">
+            <label for="fromage_chevre">
+                Chèvre
+            </label>
+        </div>
+
+        <p class="text-xl font-bold mt-5 mb-3">
+            Viande
+        </p>
+        <div class="flex items-center">
+            <input name="jambon" type="checkbox" id="jambon" class="h-4 w-4 text-red-600 border-gray-300 mr-3">
+            <label for="jambon">
+                Jambon
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input name="pepperoni" type="checkbox" id="pepperoni" class="h-4 w-4 text-red-600 border-gray-300 mr-3">
+            <label for="pepperoni">
+                Pepperoni
+            </label>
+        </div>
+
+        <button type="submit" class="mt-8 block px-6 py-3 bg-red-700 text-red-50 font-bold text-lg transition transform hover:scale-110 hover:shadow-lg">
+            Voir le devis pour ma pizza
+        </button>
+
+    </form>
+
+{% endblock %}

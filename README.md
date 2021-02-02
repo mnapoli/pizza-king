@@ -42,3 +42,15 @@ Installation :
 ```
 make install
 ```
+
+Tests :
+
+```
+make tests
+```
+
+Lancer le site web (http://localhost:8000/) :
+
+```
+make website
+```

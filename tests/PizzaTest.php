@@ -1,58 +1,62 @@
 <?php declare(strict_types=1);
 
-namespace Pizza\Test;
+namespace PizzaKing\Test;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
+use PizzaKing\Model\PizzaCreator;
 
 class PizzaTest extends TestCase
 {
-    public function createPizza(array $ingredients)
-    {
-        /*
-         * Ajoutez le code qu'il faut ici.
-         */
-    }
-
     public function testReine()
     {
-        $this->createPizza([
+        $pizza = PizzaCreator::create([
             'sauce tomate',
             'jambon',
             'mozzarella',
         ]);
+
+        $this->assertEquals(10, $pizza->getPrix());
     }
 
     public function testNapolitana()
     {
-        $this->createPizza([
+        $pizza = PizzaCreator::create([
             'sauce tomate',
             'mozzarella',
         ]);
+
+        $this->assertEquals(8, $pizza->getPrix());
     }
 
     public function testChevre()
     {
-        $this->createPizza([
+        $pizza = PizzaCreator::create([
             'chevre',
             'sauce tomate',
         ]);
+
+        $this->assertEquals(7, $pizza->getPrix());
     }
 
     public function testCarnivore()
     {
-        $this->createPizza([
-            'creme',
+        $pizza = PizzaCreator::create([
+            'sauce creme',
             'mozzarella',
             'jambon',
             'pepperoni',
         ]);
+
+        $this->assertEquals(14, $pizza->getPrix());
     }
 
     // Manque la sauce !
     public function testErreurSauceManquante()
     {
-        $this->expectException(\Exception::class);
-        $this->createPizza([
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Sauce manquante');
+        PizzaCreator::create([
             'mozzarella',
         ]);
     }
@@ -60,28 +64,19 @@ class PizzaTest extends TestCase
     // Manque le fromage !
     public function testErreurFromageManquant()
     {
-        $this->expectException(\Exception::class);
-        $this->createPizza([
-            'creme',
-        ]);
-    }
-
-    // C'est interdit le double fromage !
-    public function testErreurDoubleFromageInterdit()
-    {
-        $this->expectException(\Exception::class);
-        $this->createPizza([
-            'tomate',
-            'mozzarella',
-            'chèvre',
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Fromage manquant');
+        PizzaCreator::create([
+            'sauce creme',
         ]);
     }
 
     // N'importe quoi !
     public function testErreurIngredientsInconnus()
     {
-        $this->expectException(\Exception::class);
-        $this->createPizza([
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Ingrédient "frites" inconnu au bataillon');
+        PizzaCreator::create([
             'frites',
             'ananas',
         ]);

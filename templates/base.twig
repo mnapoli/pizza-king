@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pizza King</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-red-100">
+
+    <header class="bg-red-200 py-20">
+        <div class="container mx-auto px-8 max-w-4xl flex items-center">
+            <div class="flex-1">
+                <h1 class="inline-block px-12 py-8 bg-red-700 text-red-50 font-extrabold text-6xl shadow">
+                    Pizza King
+                </h1>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-2xl">
+                    La pizza que c'est toi qui <br>
+                    choisis ce qu'il y a dedans.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="py-20">
+        <div class="container mx-auto px-8 max-w-4xl">
+
+            {% block body %}{% endblock %}
+
+        </div>
+    </div>
+
+</body>
+</html>
