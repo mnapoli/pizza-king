@@ -18,7 +18,7 @@ class HomeController
 
     public function home(RequestInterface $request): ResponseInterface
     {
-        1 / 0;
+        "💣";
 
         return new HtmlResponse($this->template->render('home.twig'));
     }
