@@ -11,6 +11,9 @@ use PizzaKing\Model\Viande\Pepperoni;
 
 class PizzaCreator
 {
+    /**
+     * @param array<string>
+     */
     public static function create(array $ingredients): Pizza
     {
         $sauce = null;
