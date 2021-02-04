@@ -11,8 +11,13 @@ use PizzaKing\Model\Viande\Pepperoni;
 
 class PizzaCreator
 {
-    public static function create(array $ingredients): Pizza
+    public static function create(string ...$nameOrIngredients): Pizza
     {
+        if (\count($nameOrIngredients) === 1 && $nameOrIngredients[0][0] !== \strtolower($nameOrIngredients[0][0])) {
+            goto named;
+        }
+
+        $ingredients = $nameOrIngredients;
         $sauce = null;
         $fromage = null;
         $viandes = [];
@@ -50,5 +55,25 @@ class PizzaCreator
         }
 
         return new Pizza($sauce, $fromage, $viandes);
+
+        named:
+        return match($nameOrIngredients[0]) {
+            'Reine' => self::create(
+                'sauce tomate',
+                'jambon',
+                'mozzarella',
+            ),
+            'Napolitana' => self::create(
+                'sauce tomate',
+                'mozzarella',
+            ),
+            'Carnivore' => self::create(
+                'sauce creme',
+                'pepperoni',
+                'jambon',
+                'mozzarella',
+            ),
+            default => throw new \Exception('Pizza inconnue'),
+        };
     }
 }
