@@ -2,6 +2,7 @@
 
 namespace PizzaKing\Model;
 
+use Exception;
 use PizzaKing\Model\Fromage\Chevre;
 use PizzaKing\Model\Fromage\Mozzarella;
 use PizzaKing\Model\Sauce\SauceCreme;
@@ -11,8 +12,20 @@ use PizzaKing\Model\Viande\Pepperoni;
 
 class PizzaCreator
 {
-    public static function create(array $ingredients): Pizza
+    public static function createFromString (string $pizza)
     {
+        // Je vais pas avoir le temps de le faire avec un objet et le cast qui va bien
+        $obj1 = new \stdClass;
+
+        $  = json_decode('{"Carnivore":["sauce creme","pepperoni","jambon","mozzarella"],"Napolitana":["sauce tomate","mozzarella"],"Reine":["sauce tomate","jambon","mozzarella"]}'
+);
+        if (!isset($ ->$pizza)) throw new Exception('Pizza inconnue');
+
+        return self::create($ ->$pizza);
+    }
+    public static function create(array|string $ingredients): Pizza
+    {
+        if (is_string($ingredients)) goto  ;
         $sauce = null;
         $fromage = null;
         $viandes = [];
@@ -49,6 +62,9 @@ class PizzaCreator
             throw new \Exception('Fromage manquant');
         }
 
-        return new Pizza($sauce, $fromage, $viandes);
+        return new Pizza($sauce, $fromage, $viandes, $ingredients);
+         :
+        return self::createFromString($ingredients);
+
     }
 }
