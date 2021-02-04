@@ -10,43 +10,43 @@ class PizzaFromIngredientsTest extends TestCase
 {
     public function testReine()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::create(
             'sauce tomate',
             'jambon',
             'mozzarella',
-        ]);
+        );
 
         $this->assertEquals(10, $pizza->getPrix());
     }
 
     public function testNapolitana()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::create(
             'sauce tomate',
             'mozzarella',
-        ]);
+        );
 
         $this->assertEquals(8, $pizza->getPrix());
     }
 
     public function testChevre()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::create(
             'chevre',
             'sauce tomate',
-        ]);
+        );
 
         $this->assertEquals(7, $pizza->getPrix());
     }
 
     public function testCarnivore()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::create(
             'sauce creme',
             'mozzarella',
             'jambon',
             'pepperoni',
-        ]);
+        );
 
         $this->assertEquals(14, $pizza->getPrix());
     }
@@ -56,9 +56,9 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Sauce manquante');
-        PizzaCreator::create([
+        PizzaCreator::create(
             'mozzarella',
-        ]);
+        );
     }
 
     // Manque le fromage !
@@ -66,9 +66,9 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Fromage manquant');
-        PizzaCreator::create([
+        PizzaCreator::create(
             'sauce creme',
-        ]);
+        );
     }
 
     // N'importe quoi !
@@ -76,9 +76,9 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Ingrédient "frites" inconnu au bataillon');
-        PizzaCreator::create([
+        PizzaCreator::create(
             'frites',
             'ananas',
-        ]);
+        );
     }
 }
