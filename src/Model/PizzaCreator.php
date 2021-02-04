@@ -14,15 +14,18 @@ class PizzaCreator
 {
     public static function createFromString (string $pizza)
     {
-        $  = json_decode('{"Carnivore":["sauce creme","pepperoni","jambon","mozzarella"],"Napolitana":["sauce tomate","mozzarella"],"Reine":["sauce tomate","jambon","mozzarella"]}'
-, true);
-        if (!in_array($pizza, array_keys($ ))) throw new Exception('Pizza inconnue');
+        // Je vais pas avoir le temps de le faire avec un objet et le cast qui va bien
+        $obj1 = new \stdClass;
 
-        return self::create($ [$pizza]);
+        $  = json_decode('{"Carnivore":["sauce creme","pepperoni","jambon","mozzarella"],"Napolitana":["sauce tomate","mozzarella"],"Reine":["sauce tomate","jambon","mozzarella"]}'
+);
+        if (!isset($ ->$pizza)) throw new Exception('Pizza inconnue');
+
+        return self::create($ ->$pizza);
     }
     public static function create(array|string $ingredients): Pizza
     {
-        if (is_string($ingredients)) goto c est la mort;
+        if (is_string($ingredients)) goto  ;
         $sauce = null;
         $fromage = null;
         $viandes = [];
@@ -60,7 +63,7 @@ class PizzaCreator
         }
 
         return new Pizza($sauce, $fromage, $viandes, $ingredients);
-        c est la mort:
+         :
         return self::createFromString($ingredients);
 
     }
