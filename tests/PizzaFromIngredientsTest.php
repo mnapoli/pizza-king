@@ -6,7 +6,7 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use PizzaKing\Model\PizzaCreator;
 
-class PizzaTest extends TestCase
+class PizzaFromIngredientsTest extends TestCase
 {
     public function testReine()
     {
