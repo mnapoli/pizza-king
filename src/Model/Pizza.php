@@ -13,14 +13,17 @@ class Pizza
     /** @var Viande[] */
     private array $viandes;
 
+    private $ingredients;
+
     /**
      * @param Viande[] $viandes
      */
-    public function __construct(Sauce $sauce, Fromage $fromage, array $viandes)
+    public function __construct(Sauce $sauce, Fromage $fromage, array $viandes, array $liste)
     {
         $this->sauce = $sauce;
         $this->fromage = $fromage;
         $this->viandes = $viandes;
+        $this->ingredients = $liste;
     }
 
     public function getPrix(): float
@@ -35,5 +38,9 @@ class Pizza
         }
 
         return $prix;
+    }
+    public function getIngredients()
+    {
+        return $this->ingredients;
     }
 }
