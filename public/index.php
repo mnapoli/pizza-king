@@ -2,6 +2,7 @@
 
 use PizzaKing\Controller\DevisController;
 use PizzaKing\Controller\HomeController;
+use PizzaKing\Controller\PizzaController;
 use Slim\Factory\AppFactory;
 use Twig\Loader\FilesystemLoader;
 
@@ -20,5 +21,7 @@ $app = AppFactory::create();
 $app->get('/', [new HomeController($twig), 'home']);
 
 $app->post('/devis', [new DevisController($twig), 'devis']);
+
+$app->get('/pizza', [new PizzaController($twig), 'pizza']);
 
 $app->run();

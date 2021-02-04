@@ -31,17 +31,6 @@ class NamedPizzasTest extends TestCase
         ], $pizza->getIngredients());
     }
 
-    public function testChevre()
-    {
-        $pizza = PizzaCreator::create('Chevre');
-
-        $this->assertEquals(7, $pizza->getPrix());
-        $this->assertEquals([
-            'sauce tomate',
-            'chevre',
-        ], $pizza->getIngredients());
-    }
-
     public function testCarnivore()
     {
         $pizza = PizzaCreator::create('Carnivore');

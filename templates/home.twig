@@ -9,7 +9,7 @@
     <img class="float-right mt-12 w-64 border-4 border-white" alt="Pizza"
          src="https://media4.giphy.com/media/MZi92gxHBeA2Q/giphy.gif">
 
-    <form action="/devis" method="post" class="text-lg">
+    <form action="/devis" method="post" class="text-lg mb-16">
 
         <p class="text-xl font-bold mb-3">
             Sauce
@@ -64,5 +64,33 @@
         </button>
 
     </form>
+
+    <h2 class="font-extrabold text-4xl mb-8">
+        Ou alors choisis une pizza du chef 👨🏻‍🍳
+    </h2>
+
+    <p class="text-xl font-bold leading-10 mb-8">
+        <a href="/pizza?name=Reine"
+           class="float-right px-4 py-2 bg-red-700 text-red-50 font-bold text-sm transition transform hover:scale-110 hover:shadow-lg">
+            Voir le prix
+        </a>
+        Pizza Reine
+    </p>
+
+    <p class="text-xl font-bold leading-10 mb-8">
+        <a href="/pizza?name=Napolitana"
+           class="float-right px-4 py-2 bg-red-700 text-red-50 font-bold text-sm transition transform hover:scale-110 hover:shadow-lg">
+            Voir le prix
+        </a>
+        Pizza Napolitana
+    </p>
+
+    <p class="text-xl font-bold leading-10 mb-8">
+        <a href="/pizza?name=Carnivore"
+           class="float-right px-4 py-2 bg-red-700 text-red-50 font-bold text-sm transition transform hover:scale-110 hover:shadow-lg">
+            Voir le prix
+        </a>
+        Pizza Carnivore
+    </p>
 
 {% endblock %}

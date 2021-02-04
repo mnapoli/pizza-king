@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Twig\Environment;
 
-class DevisController
+class PizzaController
 {
     private Environment $template;
 
@@ -17,22 +17,11 @@ class DevisController
         $this->template = $template;
     }
 
-    public function devis(ServerRequestInterface $request): ResponseInterface
+    public function pizza(ServerRequestInterface $request): ResponseInterface
     {
-        $form = $request->getParsedBody();
+        $pizzaName = $request->getQueryParams()['name'] ?? '';
 
-        $ingredients = [
-            $form['sauce'],
-            $form['fromage'],
-        ];
-        if (isset($form['jambon'])) {
-            $ingredients[] = 'jambon';
-        }
-        if (isset($form['pepperoni'])) {
-            $ingredients[] = 'pepperoni';
-        }
-
-        $pizza = PizzaCreator::create($ingredients);
+        $pizza = PizzaCreator::create($pizzaName);
 
         return new HtmlResponse($this->template->render('devis.twig', [
             'pizza' => $pizza,
