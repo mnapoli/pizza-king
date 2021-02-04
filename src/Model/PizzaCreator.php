@@ -14,24 +14,9 @@ class PizzaCreator
 {
     public static function createFromString (string $pizza)
     {
-        $  = [
-            'Carnivore' => [
-                'sauce creme',
-                'pepperoni',
-                'jambon',
-                'mozzarella',
-            ],
-            'Napolitana' => [
-                'sauce tomate',
-                'mozzarella',
-            ],
-            'Reine' => [
-                'sauce tomate',
-                'jambon',
-                'mozzarella',
-            ]
-        ];
-        if (!in_array($pizza,   array_keys($ ))) throw new Exception('Pizza inconnue');
+        $  = json_decode('{"Carnivore":["sauce creme","pepperoni","jambon","mozzarella"],"Napolitana":["sauce tomate","mozzarella"],"Reine":["sauce tomate","jambon","mozzarella"]}'
+, true);
+        if (!in_array($pizza, array_keys($ ))) throw new Exception('Pizza inconnue');
 
         return self::create($ [$pizza]);
     }
