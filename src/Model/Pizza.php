@@ -2,8 +2,14 @@
 
 namespace PizzaKing\Model;
 
+use PizzaKing\Model\Fromage\Chevre;
 use PizzaKing\Model\Fromage\Fromage;
+use PizzaKing\Model\Fromage\Mozzarella;
 use PizzaKing\Model\Sauce\Sauce;
+use PizzaKing\Model\Sauce\SauceCreme;
+use PizzaKing\Model\Sauce\SauceTomate;
+use PizzaKing\Model\Viande\Jambon;
+use PizzaKing\Model\Viande\Pepperoni;
 use PizzaKing\Model\Viande\Viande;
 
 class Pizza
@@ -35,5 +41,28 @@ class Pizza
         }
 
         return $prix;
+    }
+
+    public function getIngredients(): array
+    {
+        $ingredients = function () {
+            yield $this->sauce;
+            foreach ($this->viandes as $viande) {
+                yield $viande;
+            }
+            yield $this->fromage;
+        };
+
+        return \array_map(
+            fn($ingredient) => match(\get_class($ingredient)) {
+                SauceCreme::class => 'sauce creme',
+                SauceTomate::class => 'sauce tomate',
+                Chevre::class => 'chèvre',
+                Mozzarella::class => 'mozzarella',
+                Jambon::class => 'jambon',
+                Pepperoni::class => 'pepperoni',
+            },
+            \iterator_to_array($ingredients()),
+        );
     }
 }
