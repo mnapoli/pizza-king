@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PizzaKing\Model\Viande;
+namespace PizzaKing\Model\Kebab;
 
-class Kebab implements Viande
+use PizzaKing\Model\Viande\Viande;
+
+class ViandeKebab implements Viande
 {
     public function getName(): string
     {
