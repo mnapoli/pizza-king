@@ -68,7 +68,13 @@ Objectif :
 </details>
 </details>
 
-Installation :
+## Installation
+
+Le projet tourne avec Docker pour pouvoir faire tourner PHP 8.
+
+Si vous avez déjà PHP 8 d'installé, vous pouvez vous passer de Docker (jetez un oeil au Makefile).
+
+Sinon, voici les commandes utiles :
 
 ```
 make install
