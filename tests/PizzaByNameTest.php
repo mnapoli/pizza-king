@@ -6,42 +6,42 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use PizzaKing\Model\PizzaCreator;
 
-class NamedPizzasTest extends TestCase
+class PizzaByNameTest extends TestCase
 {
     public function testReine()
     {
-        $pizza = PizzaCreator::create('Reine');
+        $pizza = PizzaCreator::byName('Reine');
 
         $this->assertEquals(10, $pizza->getPrix());
         $this->assertEquals([
             'sauce tomate',
-            'jambon',
             'mozzarella',
-        ], $pizza->getIngredients());
+            'jambon',
+        ], $pizza->getIngredientNames());
     }
 
     public function testNapolitana()
     {
-        $pizza = PizzaCreator::create('Napolitana');
+        $pizza = PizzaCreator::byName('Napolitana');
 
         $this->assertEquals(8, $pizza->getPrix());
         $this->assertEquals([
             'sauce tomate',
             'mozzarella',
-        ], $pizza->getIngredients());
+        ], $pizza->getIngredientNames());
     }
 
     public function testCarnivore()
     {
-        $pizza = PizzaCreator::create('Carnivore');
+        $pizza = PizzaCreator::byName('Carnivore');
 
         $this->assertEquals(14, $pizza->getPrix());
         $this->assertEquals([
             'sauce creme',
+            'mozzarella',
             'pepperoni',
             'jambon',
-            'mozzarella',
-        ], $pizza->getIngredients());
+        ], $pizza->getIngredientNames());
     }
 
     // On sait pas faire les fausses pizzas !
@@ -49,6 +49,6 @@ class NamedPizzasTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Pizza inconnue');
-        PizzaCreator::create('Pizzananas');
+        PizzaCreator::byName('Pizzananas');
     }
 }

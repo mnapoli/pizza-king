@@ -2,10 +2,13 @@
 
 namespace PizzaKing\Model\Sauce;
 
-use PizzaKing\Model\Sauce\Sauce;
-
 class SauceCreme implements Sauce
 {
+    public function getName(): string
+    {
+        return 'sauce creme';
+    }
+
     public function getPrix(): float
     {
         return 1;

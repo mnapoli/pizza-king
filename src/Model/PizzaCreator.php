@@ -11,33 +11,39 @@ use PizzaKing\Model\Viande\Pepperoni;
 
 class PizzaCreator
 {
-    public static function create(string|array $nameOrIngredients): Pizza
+    public static function byName(string $name): Pizza
     {
-        if (\is_string($nameOrIngredients)) {
-            return match($nameOrIngredients) {
-                'Reine' => self::create([
+        switch ($name) {
+            case 'Reine':
+                return self::byIngredients([
                     'sauce tomate',
                     'jambon',
                     'mozzarella',
-                ]),
-                'Napolitana' => self::create([
+                ]);
+            case 'Napolitana':
+                return self::byIngredients([
                     'sauce tomate',
                     'mozzarella',
-                ]),
-                'Carnivore' => self::create([
+                ]);
+            case 'Carnivore':
+                return self::byIngredients([
                     'sauce creme',
                     'pepperoni',
                     'jambon',
                     'mozzarella',
-                ]),
-                default => throw new \Exception('Pizza inconnue'),
-            };
+                ]);
+            default:
+                throw new \Exception('Pizza inconnue');
         }
+    }
+
+    public static function byIngredients(array $ingredients): Pizza
+    {
         $sauce = null;
         $fromage = null;
         $viandes = [];
 
-        foreach ($nameOrIngredients as $ingredient) {
+        foreach ($ingredients as $ingredient) {
             switch ($ingredient) {
                 case 'sauce tomate':
                     $sauce = new SauceTomate();
@@ -72,8 +78,9 @@ class PizzaCreator
         return new PizzaClassique($sauce, $fromage, $viandes);
     }
 
-    public static function createFromPartnership(array $ingredients, string $partnershipCode): Pizza
+    public static function createPizzaKebab(bool $salade = true, bool $tomate = true, bool $oignon = true, string $codeClient = null): Pizza
     {
+        // TODO
         return new PizzaClassique(new SauceTomate(), new Mozzarella(), []);
     }
 }

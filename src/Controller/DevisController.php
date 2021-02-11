@@ -32,7 +32,7 @@ class DevisController
             $ingredients[] = 'pepperoni';
         }
 
-        $pizza = PizzaCreator::create($ingredients);
+        $pizza = PizzaCreator::byIngredients($ingredients);
 
         return new HtmlResponse($this->template->render('devis.twig', [
             'pizza' => $pizza,
@@ -43,21 +43,12 @@ class DevisController
     {
         $form = $request->getParsedBody();
 
-        $ingredients = [
-            $form['sauce'],
-            $form['kebab'],
-        ];
-        if (isset($form['salade'])) {
-            $ingredients[] = 'salade';
-        }
-        if (isset($form['tomate'])) {
-            $ingredients[] = 'tomate';
-        }
-        if (isset($form['oignon'])) {
-            $ingredients[] = 'oignon';
-        }
+        $salade = isset($form['salade']);
+        $tomate = isset($form['tomate']);
+        $oignon = isset($form['oignon']);
+        $codeClient = $form['code_client'] ?? null;
 
-        $pizza = PizzaCreator::createFromPartnership($ingredients, $form['code_promo']);
+        $pizza = PizzaCreator::createPizzaKebab($salade, $tomate, $oignon, $codeClient);
 
         return new HtmlResponse($this->template->render('devis.twig', [
             'pizza' => $pizza,

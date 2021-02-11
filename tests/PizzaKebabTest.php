@@ -8,64 +8,33 @@ use PizzaKing\Model\PizzaCreator;
 
 final class PizzaKebabTest extends TestCase
 {
-    /**
-     * @dataProvider compositionKebab
-     */
-    public function testPizzaKebabAComposer(array $ingredients, int $expectedPrice): void
+    public function testPizzaKebab(): void
     {
-        $pizza = PizzaCreator::createFromPartnership($ingredients, 'PizzaKebab');
+        $pizza = PizzaCreator::createPizzaKebab();
+        $this->assertEquals(15, $pizza->getPrix());
 
-        $this->assertEquals($expectedPrice, $pizza->getPrix());
-        $this->assertTrue(\in_array('sauce creme', $pizza->getIngredients()));
-        $this->assertTrue(\in_array('kebab', $pizza->getIngredients()));
+        // Sans salade
+        $sansSalade = PizzaCreator::createPizzaKebab(false);
+        $this->assertEquals(14, $sansSalade->getPrix());
+
+        // Sans oignon
+        $sansSalade = PizzaCreator::createPizzaKebab(true, true, false);
+        $this->assertEquals(13, $sansSalade->getPrix());
     }
 
-    /**
-     * @dataProvider compositionKebabPourDenisse
-     */
-    public function testPizzaKebabAComposerPourDenisse(array $ingredients, int $expectedPrice): void
+    public function testPizzaKebabPourDenisse(): void
     {
-        $pizza = PizzaCreator::createFromPartnership($ingredients, 'PizzaKebabPourDenisse');
-
-        $this->assertEquals($expectedPrice, $pizza->getPrix());
-        $this->assertFalse(\in_array('kebab', $pizza->getIngredients()));
+        $pizza = PizzaCreator::createPizzaKebab(true, true, true, 'PizzaKebabPourDenisse');
+        // Pas de viande !
+        $this->assertNotContains('kebab', $pizza->getIngredientNames());
+        $this->assertEquals(10, $pizza->getPrix());
     }
 
-    public function testUnCodeDePartenariatInconnuNeDoitPasFonctionner(): void
+    public function testUnCodeInconnuNeDoitPasFonctionner(): void
     {
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Partenariat inconnu');
 
-        PizzaCreator::createFromPartnership([], 'JeVeuxJusteUnKebab');
-    }
-
-    public function compositionKebab(): array
-    {
-        return [
-            //            ingredients            prix
-            [ [],                                 10 ],
-            [ ['oignon' ],                        12 ],
-            [ ['tomate' ],                        12 ],
-            [ ['tomate', 'oignon' ],              14 ],
-            [ ['salade' ],                        11 ],
-            [ ['salade', 'oignon' ],              13 ],
-            [ ['salade', 'tomate' ],              13 ],
-            [ ['salade', 'tomate', 'oignon' ],    15 ],
-        ];
-    }
-
-    public function compositionKebabPourDenisse(): array
-    {
-        return [
-            //            ingredients            prix
-            [ [],                                 5 ],
-            [ ['oignon' ],                        7 ],
-            [ ['tomate' ],                        7 ],
-            [ ['tomate', 'oignon' ],              9 ],
-            [ ['salade' ],                        6 ],
-            [ ['salade', 'oignon' ],              8 ],
-            [ ['salade', 'tomate' ],              8 ],
-            [ ['salade', 'tomate', 'oignon' ],    10 ],
-        ];
+        PizzaCreator::createPizzaKebab(true, true, true, 'JeVeuxJusteUnKebab');
     }
 }

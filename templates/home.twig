@@ -7,58 +7,38 @@
 
     <form action="/devis-kebab" method="post" class="text-lg mb-16 text-yellow-200 bg-blue-900 p-2">
 
-        <p class="text-xl font-bold mb-3">
-            Sauce
-        </p>
-        <div class="flex items-center">
-            <input name="sauce" type="radio" id="sauce_creme" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="sauce creme" checked>
-            <label for="sauce_creme">
-                Sauce crème
-            </label>
-        </div>
-
         <p class="text-xl font-bold mt-5 mb-3">
-            Garniture
+            Pizza Kebab !
         </p>
         <div class="flex items-center">
-            <input name="salade" type="checkbox" id="salade" class="h-4 w-4 text-red-600 border-gray-300 mr-3">
+            <input name="salade" type="checkbox" id="salade" class="h-4 w-4 text-red-600 border-gray-300 mr-3" checked>
             <label for="salade">
                 Salade
             </label>
         </div>
         <div class="flex items-center">
-            <input name="tomate" type="checkbox" id="tomate" class="h-4 w-4 text-red-600 border-gray-300 mr-3">
+            <input name="tomate" type="checkbox" id="tomate" class="h-4 w-4 text-red-600 border-gray-300 mr-3" checked>
             <label for="tomate">
                 Tomate
             </label>
         </div>
         <div class="flex items-center">
-            <input name="oignon" type="checkbox" id="oignon" class="h-4 w-4 text-red-600 border-gray-300 mr-3">
+            <input name="oignon" type="checkbox" id="oignon" class="h-4 w-4 text-red-600 border-gray-300 mr-3" checked>
             <label for="oignon">
                 Oignon
             </label>
         </div>
 
         <p class="text-xl font-bold mt-5 mb-3">
-            Viande
-        </p>
-        <div class="flex items-center">
-            <input name="kebab" type="radio" id="kebab" class="h-4 w-4 text-red-600 border-gray-300 mr-3" value="kebab" checked>
-            <label for="kebab">
-                Viande Kebab
-            </label>
-        </div>
-
-        <p class="text-xl font-bold mt-5 mb-3">
-            Code promo
+            Code client (optionnel)
         </p>
         <div class="flex flex-col items-start">
-            <label for="code_promo"></label>
-            <input name="code_promo" id="code_promo" type="text" value="PizzaKebab" class="text-blue-900 pl-1">
+            <label for="code_client"></label>
+            <input name="code_client" id="code_client" type="text" value="" class="text-blue-900 pl-1">
         </div>
 
         <button type="submit" class="mt-8 block px-6 py-3 bg-red-700 text-red-50 font-bold text-lg transition transform hover:scale-110 hover:shadow-lg">
-            Voir le devis pour ma pizza
+            Voir le devis pour ma pizza Kebab
         </button>
 
     </form>

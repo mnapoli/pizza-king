@@ -2,15 +2,15 @@
 
 namespace PizzaKing\Model\Viande;
 
-class Jambon implements Viande
+class Kebab implements Viande
 {
     public function getName(): string
     {
-        return 'jambon';
+        return 'kebab';
     }
 
     public function getPrix(): float
     {
-        return 2;
+        return 5;
     }
 }

@@ -10,7 +10,7 @@ class PizzaFromIngredientsTest extends TestCase
 {
     public function testReine()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::byIngredients([
             'sauce tomate',
             'jambon',
             'mozzarella',
@@ -21,7 +21,7 @@ class PizzaFromIngredientsTest extends TestCase
 
     public function testNapolitana()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::byIngredients([
             'sauce tomate',
             'mozzarella',
         ]);
@@ -31,7 +31,7 @@ class PizzaFromIngredientsTest extends TestCase
 
     public function testChevre()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::byIngredients([
             'chevre',
             'sauce tomate',
         ]);
@@ -41,7 +41,7 @@ class PizzaFromIngredientsTest extends TestCase
 
     public function testCarnivore()
     {
-        $pizza = PizzaCreator::create([
+        $pizza = PizzaCreator::byIngredients([
             'sauce creme',
             'mozzarella',
             'jambon',
@@ -56,7 +56,7 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Sauce manquante');
-        PizzaCreator::create([
+        PizzaCreator::byIngredients([
             'mozzarella',
         ]);
     }
@@ -66,7 +66,7 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Fromage manquant');
-        PizzaCreator::create([
+        PizzaCreator::byIngredients([
             'sauce creme',
         ]);
     }
@@ -76,7 +76,7 @@ class PizzaFromIngredientsTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Ingrédient "frites" inconnu au bataillon');
-        PizzaCreator::create([
+        PizzaCreator::byIngredients([
             'frites',
             'ananas',
         ]);

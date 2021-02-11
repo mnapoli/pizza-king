@@ -2,14 +2,8 @@
 
 namespace PizzaKing\Model;
 
-use PizzaKing\Model\Fromage\Chevre;
 use PizzaKing\Model\Fromage\Fromage;
-use PizzaKing\Model\Fromage\Mozzarella;
 use PizzaKing\Model\Sauce\Sauce;
-use PizzaKing\Model\Sauce\SauceCreme;
-use PizzaKing\Model\Sauce\SauceTomate;
-use PizzaKing\Model\Viande\Jambon;
-use PizzaKing\Model\Viande\Pepperoni;
 use PizzaKing\Model\Viande\Viande;
 
 class PizzaClassique implements Pizza
@@ -34,35 +28,32 @@ class PizzaClassique implements Pizza
         // Prix de base d'une pizza
         $prix = 4;
 
-        $prix += $this->sauce->getPrix();
-        $prix += $this->fromage->getPrix();
-        foreach ($this->viandes as $viande) {
-            $prix += $viande->getPrix();
+        foreach ($this->getIngredients() as $ingredient) {
+            $prix += $ingredient->getPrix();
         }
 
         return $prix;
     }
 
-    public function getIngredients(): array
+    /**
+     * @return string[]
+     */
+    public function getIngredientNames(): array
     {
-        $ingredients = function () {
-            yield $this->sauce;
-            foreach ($this->viandes as $viande) {
-                yield $viande;
-            }
-            yield $this->fromage;
-        };
+        return array_map(function (Ingredient $ingredient) {
+            return $ingredient->getName();
+        }, $this->getIngredients());
+    }
 
-        return \array_map(
-            fn($ingredient) => match(\get_class($ingredient)) {
-                SauceCreme::class => 'sauce creme',
-                SauceTomate::class => 'sauce tomate',
-                Chevre::class => 'chèvre',
-                Mozzarella::class => 'mozzarella',
-                Jambon::class => 'jambon',
-                Pepperoni::class => 'pepperoni',
-            },
-            \iterator_to_array($ingredients()),
-        );
+    /**
+     * @return Ingredient[]
+     */
+    private function getIngredients(): array
+    {
+        return [
+            $this->sauce,
+            $this->fromage,
+            ...$this->viandes,
+        ];
     }
 }

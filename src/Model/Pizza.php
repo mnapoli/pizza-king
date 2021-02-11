@@ -7,5 +7,8 @@ interface Pizza
 {
     public function getPrix(): float;
 
-    public function getIngredients(): array;
+    /**
+     * @return string[]
+     */
+    public function getIngredientNames(): array;
 }

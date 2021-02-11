@@ -21,7 +21,7 @@ class PizzaController
     {
         $pizzaName = $request->getQueryParams()['name'] ?? '';
 
-        $pizza = PizzaCreator::create($pizzaName);
+        $pizza = PizzaCreator::byName($pizzaName);
 
         return new HtmlResponse($this->template->render('devis.twig', [
             'pizza' => $pizza,
