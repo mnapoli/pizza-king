@@ -22,21 +22,12 @@ Voici le prix des ingrédients:
 - prix de l'oignon : 2 €
 - prix de la viande kebab : 5€
 
-Au fait, en échange de son travail exceptionnel, j'ai aussi un autre code promo pour Denisse : `PizzaKebabPourDenisse`.   
-Il doit permettre la même chose qu'au dessus, sauf que sa Pizza Kebab n'aura pas de viande Kebab, il n'aime pas ça.
-
-Il se trouve que les clients de la pizzeria sont des développeurs PHP.  
-Ils passeront commande via un script PHP, en appelant les classes et/ou fonctions nécessaires.
-Pizzeria 2.0 !
+Au fait, Denisse aime bien les pizza Kebab, mais sans Kebab. C'est pour ça qu'il a un code client unique : `PizzaKebabPourDenisse`.   
+Ce code client lui donne accès une une Pizza Kebab sans viande Kebab.
 
 Contraintes :
 
 - vous n'avez pas le droit d'utiliser une base de données serveur, genre MySQL (parce que mon cousin m'a dit que c'était pas web-scale)
-- pas besoin de faire une UI web ou CLI
-
-Objectif :
-
-- utiliser le maximum de features uniques à PHP 8 (mon cousin m'a dit que c'était mieux)
 
 <details>
 <summary>Énoncés précédents</summary>
