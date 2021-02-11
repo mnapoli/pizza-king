@@ -4,7 +4,7 @@ Je m'appelle Jean-Michel et je fais des pizzas dans ma pizzeria.
 Dans ma pizzeria, les clients peuvent composer des pizzas.  
 
 Cette semaine, j'ai fait un partenariat avec le "Kebab du coin" !  
-Un ami de mon cousin, un spécialiste en intégration web qui s'appelle Denisse (c'est un américain), m'a ajouté un encart bien visible en haut du site, avec la possibilité de commander une pizza kebab avec le code promo `PizzaKebab`.  
+Un ami de mon cousin, un spécialiste en intégration web qui s'appelle Denisse (c'est un américain), m'a ajouté un encart bien visible en haut du site, avec la possibilité de commander une pizza kebab.  
 Il ne reste plus qu'à faire le code pour la pizza Kebab.
 
 C'est très simple, voici les conditions:
