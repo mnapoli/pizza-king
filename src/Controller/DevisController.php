@@ -38,4 +38,29 @@ class DevisController
             'pizza' => $pizza,
         ]));
     }
+
+    public function devisKebab(ServerRequestInterface $request): ResponseInterface
+    {
+        $form = $request->getParsedBody();
+
+        $ingredients = [
+            $form['sauce'],
+            $form['kebab'],
+        ];
+        if (isset($form['salade'])) {
+            $ingredients[] = 'salade';
+        }
+        if (isset($form['tomate'])) {
+            $ingredients[] = 'tomate';
+        }
+        if (isset($form['oignon'])) {
+            $ingredients[] = 'oignon';
+        }
+
+        $pizza = PizzaCreator::createFromPartnership($ingredients, $form['code_promo']);
+
+        return new HtmlResponse($this->template->render('devis.twig', [
+            'pizza' => $pizza,
+        ]));
+    }
 }

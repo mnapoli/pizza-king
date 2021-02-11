@@ -22,6 +22,8 @@ $app->get('/', [new HomeController($twig), 'home']);
 
 $app->post('/devis', [new DevisController($twig), 'devis']);
 
+$app->post('/devis-kebab', [new DevisController($twig), 'devisKebab']);
+
 $app->get('/pizza', [new PizzaController($twig), 'pizza']);
 
 $app->run();

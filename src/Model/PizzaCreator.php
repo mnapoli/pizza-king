@@ -69,6 +69,11 @@ class PizzaCreator
             throw new \Exception('Fromage manquant');
         }
 
-        return new Pizza($sauce, $fromage, $viandes);
+        return new PizzaClassique($sauce, $fromage, $viandes);
+    }
+
+    public static function createFromPartnership(array $ingredients, string $partnershipCode): Pizza
+    {
+        return new PizzaClassique(new SauceTomate(), new Mozzarella(), []);
     }
 }
